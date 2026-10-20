@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productos Espaciales</title>
+<style>
+:root{
+  --verde:#0f766e;
+  --verde2:#14b8a6;
+  --oscuro:#173f3a;
+  --crema:#f5f7f2;
+  --arena:#e7efe8;
+  --blanco:#ffffff;
+  --texto:#243431;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--crema);
+  color:var(--texto);
+  min-height:100vh;
+}
+a{text-decoration:none;color:inherit}
+.header{
+  width:100%;
+  background:var(--blanco);
+  border-bottom:1px solid #d7e3df;
+  padding:18px 5%;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:20px;
+}
+.company{font-size:22px;font-weight:800;color:var(--oscuro);letter-spacing:.5px}
+.school{text-align:right;font-size:15px;font-weight:700;color:var(--verde)}
+.logo{
+  width:92px;
+  height:92px;
+  border-radius:50%;
+  padding:8px;
+  background:var(--arena);
+  border:4px solid var(--verde2);
+  object-fit:contain;
+  box-shadow:0 8px 22px #0f766e22;
+}
+.nav{
+  width:100%;
+  padding:12px 5%;
+  background:var(--oscuro);
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.nav button{
+  border:0;
+  background:transparent;
+  color:white;
+  padding:11px 18px;
+  border-radius:22px;
+  cursor:pointer;
+  font-weight:700;
+  transition:.2s;
+}
+.nav button:hover,.nav button.active{background:var(--verde2);color:var(--oscuro)}
+main{width:100%;min-height:calc(100vh - 220px);padding:45px 6%}
+.page{display:none;max-width:1200px;margin:auto}
+.page.active{display:block;animation:show .3s ease}
+@keyframes show{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{
+  display:grid;
+  grid-template-columns:1.25fr .75fr;
+  gap:30px;
+  align-items:stretch;
+}
+.heroText{
+  background:var(--oscuro);
+  color:white;
+  padding:48px;
+  border-radius:30px;
+  box-shadow:0 18px 40px #173f3a20;
+}
+.heroText span{color:var(--verde2);font-weight:800;text-transform:uppercase;letter-spacing:2px}
+h1{font-size:clamp(38px,5vw,68px);line-height:.98;margin:16px 0}
+.heroText p{font-size:18px;line-height:1.7;color:#e1f0ed}
+.heroCard{
+  background:white;
+  border-radius:30px;
+  padding:30px;
+  border:1px solid #d6e3df;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-shadow:0 18px 40px #173f3a15;
+}
+.heroCard h2{color:var(--verde);margin-bottom:12px}
+.heroCard p{line-height:1.65}
+.sectionTitle{text-align:center;margin-bottom:30px}
+.sectionTitle h2{font-size:36px;color:var(--oscuro)}
+.sectionTitle p{margin-top:8px;color:#61716d}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.card{
+  background:white;
+  border-radius:24px;
+  padding:28px;
+  border:1px solid #d8e4e0;
+  min-height:250px;
+  box-shadow:0 12px 28px #173f3a10;
+}
+.icon{
+  width:52px;height:52px;border-radius:16px;
+  display:grid;place-items:center;
+  background:#ccfbf1;color:var(--verde);font-size:25px;
+  margin-bottom:18px;
+}
+.card h3{color:var(--oscuro);margin-bottom:10px}
+.card p{line-height:1.65;color:#586964}
+.timeline{display:grid;gap:16px;max-width:900px;margin:auto}
+.item{display:grid;grid-template-columns:120px 1fr;gap:20px;background:white;padding:22px;border-radius:20px;border-left:5px solid var(--verde2);box-shadow:0 8px 20px #173f3a0d}
+.item strong{color:var(--verde);font-size:18px}
+.item p{line-height:1.6}
+.links{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.link{background:var(--arena);color:var(--oscuro);padding:10px 15px;border-radius:18px;font-weight:700}
+.link:hover{background:var(--verde2)}
+.footer{background:#102f2c;color:#d9eeea;padding:28px 6%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px}
+.footer strong{color:white}
+@media(max-width:800px){
+  .header{grid-template-columns:1fr;text-align:center}
+  .school{text-align:center}
+  .logo{margin:auto}
+  .hero,.cards{grid-template-columns:1fr}
+  .heroText{padding:32px}
+  .item{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="company">Productos Espaciales</div>
+  <img class="logo" src="imagen0.jpg" alt="Logo del proyecto">
+  <div class="school">Unidad Educativa Fiscal<br>Provincia de Bolívar</div>
+</header>
+<nav class="nav">
+  <button class="active" onclick="mostrar('inicio',this)">Inicio</button>
+  <button onclick="abrirGeneral()">General</button>
+  <button onclick="mostrar('historia',this)">Historia</button>
+  <button onclick="mostrar('innovacion',this)">Innovación</button>
+  <button onclick="mostrar('sostenibilidad',this)">Sostenibilidad</button>
+</nav>
+<main>
+  <section id="inicio" class="page active">
+    <div class="hero">
+      <div class="heroText">
+        <span>Proyecto educativo</span>
+        <h1>Productos Espaciales</h1>
+        <p>Un recorrido por la evolución de los productos de limpieza y cuidado del hogar, sus transformaciones industriales y las nuevas ideas que buscan hacerlos más responsables con las personas y el ambiente.</p>
+      </div>
+      <div class="heroCard">
+        <h2>Conocimiento que transforma</h2>
+        <p>Este proyecto reúne información histórica, empresarial y ambiental para comprender cómo una industria cotidiana ha cambiado con la tecnología, el diseño y las nuevas necesidades de la sociedad.</p>
+      </div>
+    </div>
+    <div class="sectionTitle" style="margin-top:55px">
+      <h2>Explora el proyecto</h2>
+      <p>Cada sección presenta un enfoque diferente.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><div class="icon">◈</div><h3>Historia</h3><p>Conoce cómo evolucionaron los productos domésticos desde soluciones tradicionales hasta las modernas categorías de cuidado del hogar.</p></article>
+      <article class="card"><div class="icon">✦</div><h3>Innovación</h3><p>Descubre cómo el diseño, la investigación y las nuevas tecnologías han cambiado la presentación y el desarrollo de estos productos.</p></article>
+      <article class="card"><div class="icon">♧</div><h3>Sostenibilidad</h3><p>Una mirada a los envases, el consumo responsable y los esfuerzos de la industria por reducir su impacto ambiental.</p></article>
+    </div>
+  </section>
+
+  <section id="historia" class="page">
+    <div class="sectionTitle"><h2>Historia de la industria del cuidado del hogar</h2><p>Una línea del tiempo sencilla para comprender su evolución.</p></div>
+    <div class="timeline">
+      <article class="item"><strong>Antigüedad</strong><p>Las sociedades utilizaron agua, cenizas, grasas, plantas y otros materiales disponibles para limpiar objetos, tejidos y espacios.</p></article>
+      <article class="item"><strong>Siglo XIX</strong><p>La industrialización permitió fabricar jabones y productos de limpieza a mayor escala, facilitando su distribución a más hogares.</p></article>
+      <article class="item"><strong>Siglo XX</strong><p>La química industrial impulsó detergentes, limpiadores especializados y nuevas formas de presentación, como polvos, líquidos y aerosoles.</p></article>
+      <article class="item"><strong>Actualidad</strong><p>La innovación se concentra en productos más prácticos, envases eficientes, información clara para el consumidor y alternativas con menor impacto ambiental.</p></article>
+    </div>
+  </section>
+
+  <section id="innovacion" class="page">
+    <div class="sectionTitle"><h2>Innovación y nuevas tendencias</h2><p>Ideas que están transformando la industria.</p></div>
+    <div class="cards">
+      <article class="card"><div class="icon">01</div><h3>Diseño inteligente</h3><p>Los envases actuales buscan facilitar el transporte, almacenamiento y dosificación, además de comunicar claramente sus características.</p></article>
+      <article class="card"><div class="icon">02</div><h3>Formulaciones modernas</h3><p>La investigación busca mejorar el rendimiento de los productos y responder a necesidades específicas de limpieza y cuidado.</p></article>
+      <article class="card"><div class="icon">03</div><h3>Información al consumidor</h3><p>Las etiquetas modernas incorporan instrucciones, advertencias, composición general y recomendaciones para un uso responsable.</p></article>
+    </div>
+    <div class="links">
+      <a class="link" href="https://www.clorox.com/es/productos/" target="_blank">Clorox · productos</a>
+      <a class="link" href="https://www.unilever.com/brands/home-care/" target="_blank">Unilever · Home Care</a>
+      <a class="link" href="https://scjohnson.com/en/our-brands" target="_blank">SC Johnson · marcas</a>
+    </div>
+  </section>
+
+  <section id="sostenibilidad" class="page">
+    <div class="sectionTitle"><h2>Sostenibilidad</h2><p>La limpieza también puede relacionarse con el cuidado del entorno.</p></div>
+    <div class="cards">
+      <article class="card"><div class="icon">♻</div><h3>Envases</h3><p>El uso eficiente de materiales y el reciclaje ayudan a disminuir la cantidad de residuos generados después del consumo.</p></article>
+      <article class="card"><div class="icon">●</div><h3>Consumo responsable</h3><p>Leer las etiquetas y seguir las indicaciones del fabricante ayuda a evitar desperdicios y favorece un uso responsable.</p></article>
+      <article class="card"><div class="icon">☘</div><h3>Compromiso ambiental</h3><p>Muchas empresas desarrollan programas relacionados con reducción de residuos, eficiencia de recursos y transparencia sobre sus productos.</p></article>
+    </div>
+    <div class="links">
+      <a class="link" href="https://www.unilever.com/brands/home-care/" target="_blank">Unilever · Home Care</a>
+      <a class="link" href="https://scjohnson.com/en/news-stories/official-communications/sc-johnson-family-company" target="_blank">SC Johnson · empresa</a>
+      <a class="link" href="https://us.pg.com/brands/" target="_blank">P&G · marcas</a>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div><strong>Productos Espaciales</strong><br>Proyecto educativo de productos de cuidado del hogar.</div>
+  <div><strong>Unidad Educativa Fiscal Provincia de Bolívar</strong><br>Trabajo académico · 2026</div>
+</footer>
+<script>
+function mostrar(id,boton){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  boton.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function abrirGeneral(){
+  window.location.href='productos quimicos.html';
+}
+</script>
+</body>
+</html>
